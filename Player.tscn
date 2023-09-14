@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv4t4kvs11417"]
+[gd_scene load_steps=13 format=3 uid="uid://bv4t4kvs11417"]
 
 [ext_resource type="Texture2D" uid="uid://b77wwgj0bay5" path="res://assets/images/ramses/idle.png" id="1_blp81"]
 [ext_resource type="Script" path="res://Player.cs" id="1_gq5ag"]
@@ -7,18 +7,19 @@
 
 [sub_resource type="Animation" id="Animation_heo6k"]
 resource_name = "Idle"
-length = 1.4
+length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Idle:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 0, 0, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_ngu7q"]
@@ -26,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Idle:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Track:frame")
+tracks/1/path = NodePath("../Track:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,14 +51,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Walk:frame")
+tracks/2/path = NodePath("../Walk:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_8dh87"]
@@ -66,7 +67,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Track:frame")
+tracks/0/path = NodePath("../Track:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,18 +79,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_omuwt"]
 resource_name = "Walk"
-length = 1.4
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Walk:frame")
+tracks/0/path = NodePath("../Walk:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_udykx"]
@@ -99,6 +100,19 @@ _data = {
 "Track": SubResource("Animation_8dh87"),
 "Walk": SubResource("Animation_omuwt")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mmcr5"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tlhhf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_as3h2"]
+states/Idle/node = SubResource("AnimationNodeAnimation_mmcr5")
+states/Idle/position = Vector2(375, 100)
+states/Start/position = Vector2(207, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tlhhf")]
+graph_offset = Vector2(-432, -20)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_gq5ag")
@@ -116,9 +130,14 @@ hframes = 4
 visible = false
 texture = ExtResource("3_aomtg")
 hframes = 8
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Idle")
 libraries = {
 "": SubResource("AnimationLibrary_udykx")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_as3h2")
+anim_player = NodePath("../AnimationPlayer")
+active = true
