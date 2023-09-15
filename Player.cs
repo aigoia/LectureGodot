@@ -3,8 +3,6 @@ using Godot;
 
 namespace GodotTest;
 
-enum PlayerDirection { None, Right, Left }
-
 public partial class Player : Node2D
 {
 	float _horizontalMovement = 0; 
