@@ -47,7 +47,7 @@ public partial class Player : Node2D
 	
 	void State() 
 	{
-		if (_velocity.X is not 0) _image.FlipH = (_velocity.X < 0);
-		_animationPlayer.Play((_velocity.X is > 0 or < 0) ? "Walk" : (_track) ? "Track" : "Idle");
+		if (_velocity.X is not 0) _image.FlipH = _velocity.X < 0;
+		_animationPlayer.Play(_velocity.X is > 0 or < 0 ? "Walk" : (_track ? "Track" : "Idle"));
 	}
 }
