@@ -1,6 +1,6 @@
 using Godot;
 
-namespace GodotTest.EgoSciprt;
+namespace GodotTest.EgoScript;
 
 public partial class FileTest : Node2D
 {
