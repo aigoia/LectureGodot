@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace GodotTest.EgoSciprt;
 
 public partial class FileTest : Node2D
 {
