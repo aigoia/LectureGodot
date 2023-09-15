@@ -1,33 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwtpn2ewvs50n"]
+[gd_scene load_steps=9 format=3 uid="uid://dwtpn2ewvs50n"]
 
-[ext_resource type="Script" path="res://Main.cs" id="1_ihggr"]
-[ext_resource type="Texture2D" uid="uid://6uvdcc3eqil8" path="res://assets/tiles/map.png" id="1_qki1j"]
-[ext_resource type="Script" path="res://Map.cs" id="2_n0iu6"]
-[ext_resource type="Script" path="res://AsyncTest.cs" id="3_gg4v2"]
-[ext_resource type="Script" path="res://FruitTest.cs" id="3_paw2k"]
-[ext_resource type="Texture2D" uid="uid://gdyi881cmswp" path="res://icon.svg" id="4_gysof"]
-[ext_resource type="PackedScene" uid="uid://bv4t4kvs11417" path="res://Player.tscn" id="4_ldw6q"]
+[ext_resource type="Script" path="res://EgoSciprt/Main.cs" id="1_s8eap"]
+[ext_resource type="Texture2D" uid="uid://6uvdcc3eqil8" path="res://Assets/Tiles/map.png" id="2_i7qc1"]
+[ext_resource type="Script" path="res://EgoSciprt/Map.cs" id="3_2y45c"]
+[ext_resource type="PackedScene" uid="uid://iwm6ni57n1fp" path="res://Prefabs/Player.tscn" id="4_ldw6q"]
+[ext_resource type="Script" path="res://EgoSciprt/AsyncTest.cs" id="4_s1mne"]
+[ext_resource type="Texture2D" uid="uid://gdyi881cmswp" path="res://Assets/icon.svg" id="5_ny428"]
+[ext_resource type="Script" path="res://EgoSciprt/FruitTest.cs" id="6_jajxb"]
+[ext_resource type="Script" path="res://EgoSciprt/FileTest.cs" id="8_jm5gh"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_ihggr")
+script = ExtResource("1_s8eap")
 
 [node name="Map" type="Sprite2D" parent="."]
 position = Vector2(336, 192)
-texture = ExtResource("1_qki1j")
-script = ExtResource("2_n0iu6")
+texture = ExtResource("2_i7qc1")
+script = ExtResource("3_2y45c")
 
 [node name="AsyncTest" type="Node2D" parent="."]
 visible = false
-script = ExtResource("3_gg4v2")
+script = ExtResource("4_s1mne")
 
 [node name="Icon" type="Sprite2D" parent="AsyncTest"]
 visible = false
 position = Vector2(300, 200)
-texture = ExtResource("4_gysof")
+texture = ExtResource("5_ny428")
 
 [node name="FruitTest" type="Node2D" parent="."]
 visible = false
-script = ExtResource("3_paw2k")
+script = ExtResource("6_jajxb")
 
 [node name="Player" parent="." instance=ExtResource("4_ldw6q")]
 position = Vector2(206, 244)
+
+[node name="FileTest" type="Node2D" parent="."]
+script = ExtResource("8_jm5gh")
