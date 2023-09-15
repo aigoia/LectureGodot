@@ -1,22 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv4t4kvs11417"]
+[gd_scene load_steps=8 format=3 uid="uid://bv4t4kvs11417"]
 
 [ext_resource type="Texture2D" uid="uid://b77wwgj0bay5" path="res://assets/images/ramses/idle.png" id="1_blp81"]
 [ext_resource type="Script" path="res://Player.cs" id="1_gq5ag"]
-[ext_resource type="Texture2D" uid="uid://dfw3wlunweqsy" path="res://assets/images/ramses/track.png" id="2_tjsd2"]
 [ext_resource type="Texture2D" uid="uid://dmc6w1dacfmww" path="res://assets/images/ramses/walk.png" id="3_aomtg"]
 
 [sub_resource type="Animation" id="Animation_heo6k"]
 resource_name = "Idle"
-length = 1.2
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_blp81")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -39,105 +62,86 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Track:frame")
+tracks/1/path = NodePath(".:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [ExtResource("1_blp81")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Walk:frame")
+tracks/2/path = NodePath(".:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [7]
 }
 
-[sub_resource type="Animation" id="Animation_8dh87"]
-resource_name = "Track"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Track:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_omuwt"]
+[sub_resource type="Animation" id="Animation_wtcrf"]
 resource_name = "Walk"
-length = 1.6
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Walk:frame")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [ExtResource("3_aomtg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_udykx"]
 _data = {
 "Idle": SubResource("Animation_heo6k"),
 "RESET": SubResource("Animation_ngu7q"),
-"Track": SubResource("Animation_8dh87"),
-"Walk": SubResource("Animation_omuwt")
+"Walk": SubResource("Animation_wtcrf")
 }
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mmcr5"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tlhhf"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_as3h2"]
-states/Idle/node = SubResource("AnimationNodeAnimation_mmcr5")
-states/Idle/position = Vector2(375, 100)
-states/Start/position = Vector2(207, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tlhhf")]
-graph_offset = Vector2(-432, -20)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_gq5ag")
 
-[node name="Idle" type="Sprite2D" parent="."]
+[node name="Image" type="Sprite2D" parent="."]
 texture = ExtResource("1_blp81")
 hframes = 7
 
-[node name="Track" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_tjsd2")
-hframes = 4
-
-[node name="Walk" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("3_aomtg")
-hframes = 8
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Idle")
+root_node = NodePath("../Image")
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_udykx")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_as3h2")
-anim_player = NodePath("../AnimationPlayer")
-active = true

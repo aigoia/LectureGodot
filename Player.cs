@@ -3,17 +3,17 @@ using Godot;
 
 namespace GodotTest;
 
-enum PlayerState { Idle, Track, Walk }
 enum PlayerDirection { None, Right, Left }
 
 public partial class Player : Node2D
 {
 	float _horizontalMovement = 0; 
-	float MoveSpeed => 50;
+	float MoveSpeed => 60;
 	Vector2 _velocity = Vector2.Zero;
 	bool _track = false;
 	
-	Sprite2D _idle;
+	Sprite2D _image;
+	AnimationPlayer _animationPlayer;
 	
 	Key Left => Key.A;
 	Key Right => Key.D;
@@ -21,8 +21,10 @@ public partial class Player : Node2D
 
 	public override void _Ready()
 	{
-		_idle = GetNode<Sprite2D>("Idle");
-		_idle.GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
+		_image = GetNode<Sprite2D>("Image");
+		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		
+		_animationPlayer.Play("Idle");
 	}
 
 	public override void _Process(double delta)
@@ -45,15 +47,7 @@ public partial class Player : Node2D
 	
 	void State() 
 	{
-		PlayerState playerState = PlayerState.Idle;
-		
-		if (_velocity.X < 0) {
-			_idle.FlipH = true;
-		} else if (_velocity.X > 0) {
-			_idle.FlipH = false;
-		}
-
-		playerState = (_velocity.X > 0 || _velocity.Y < 0) ? PlayerState.Walk : (_track) ? PlayerState.Track : PlayerState.Idle ;
-		// current = playerState;
+		if (_velocity.X is not 0) _image.FlipH = (_velocity.X < 0);
+		_animationPlayer.Play(_velocity.X is > 0 or < 0 ? "Walk" : (_track) ? "Track" : "Idle");
 	}
 }
