@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv4t4kvs11417"]
+[gd_scene load_steps=10 format=3 uid="uid://bv4t4kvs11417"]
 
 [ext_resource type="Texture2D" uid="uid://b77wwgj0bay5" path="res://assets/images/ramses/idle.png" id="1_blp81"]
 [ext_resource type="Script" path="res://Player.cs" id="1_gq5ag"]
+[ext_resource type="Texture2D" uid="uid://dfw3wlunweqsy" path="res://assets/images/ramses/track.png" id="2_tjsd2"]
 [ext_resource type="Texture2D" uid="uid://dmc6w1dacfmww" path="res://assets/images/ramses/walk.png" id="3_aomtg"]
 
 [sub_resource type="Animation" id="Animation_heo6k"]
 resource_name = "Idle"
-length = 0.7
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -125,10 +126,51 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_7ljv5"]
+resource_name = "Track"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tjsd2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_udykx"]
 _data = {
 "Idle": SubResource("Animation_heo6k"),
 "RESET": SubResource("Animation_ngu7q"),
+"Track": SubResource("Animation_7ljv5"),
 "Walk": SubResource("Animation_wtcrf")
 }
 

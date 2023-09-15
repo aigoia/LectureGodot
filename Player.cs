@@ -36,8 +36,11 @@ public partial class Player : Node2D
 		_horizontalMovement = 0;
 		
 		if (Input.IsKeyPressed(Left) && Input.IsKeyPressed(Right)) return;
+		
 		if (Input.IsKeyPressed(Left)) _horizontalMovement = -1;
 		if (Input.IsKeyPressed(Right)) _horizontalMovement = 1;
+		
+		_track = Input.IsKeyPressed(Down);
 		
 		_velocity.X = _horizontalMovement * MoveSpeed;
 		MoveLocalX((float)(_velocity.X * delta));
@@ -46,6 +49,6 @@ public partial class Player : Node2D
 	void State() 
 	{
 		if (_velocity.X is not 0) _image.FlipH = (_velocity.X < 0);
-		_animationPlayer.Play(_velocity.X is > 0 or < 0 ? "Walk" : (_track) ? "Track" : "Idle");
+		_animationPlayer.Play((_velocity.X is > 0 or < 0) ? "Walk" : (_track) ? "Track" : "Idle");
 	}
 }

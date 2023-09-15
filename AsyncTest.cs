@@ -13,7 +13,7 @@ public partial class AsyncTest : Node2D
 	{
 		_icon = GetNode<Sprite2D>("Icon");
 		
-		AsyncRoutine();
+		// AsyncRoutine();
 	}
 
 	async void AsyncRoutine()
