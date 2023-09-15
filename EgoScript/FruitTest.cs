@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 
-namespace GodotTest;
+namespace GodotTest.EgoScript;
 
 public partial class FruitTest : Node2D
 {

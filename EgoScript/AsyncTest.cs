@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Godot;
 
-namespace GodotTest;
+namespace GodotTest.EgoScript;
 
 public partial class AsyncTest : Node2D
 {

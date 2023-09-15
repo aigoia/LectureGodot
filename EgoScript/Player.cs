@@ -1,7 +1,6 @@
-using System.Reflection.Metadata.Ecma335;
 using Godot;
 
-namespace GodotTest;
+namespace GodotTest.EgoScript;
 
 public partial class Player : Node2D
 {

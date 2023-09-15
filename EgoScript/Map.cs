@@ -1,7 +1,6 @@
-using System;
 using Godot;
 
-namespace GodotTest;
+namespace GodotTest.EgoScript;
 
 public partial class Map : Sprite2D
 {
@@ -10,4 +9,5 @@ public partial class Map : Sprite2D
 		GD.Print("Hello World!");
 	}
 }
+
 
