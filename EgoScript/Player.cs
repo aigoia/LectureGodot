@@ -11,7 +11,7 @@ public partial class Player : Node2D
 	
 	Sprite2D _image;
 	AnimationPlayer _animationPlayer;
-	
+
 	Key Left => Key.A;
 	Key Right => Key.D;
 	Key Down => Key.S;
