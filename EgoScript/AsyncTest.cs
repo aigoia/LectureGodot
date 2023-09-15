@@ -7,12 +7,15 @@ public partial class AsyncTest : Node2D
 {
 	int DelayTime => 16;
 	float RotateAngle => 1f;
-	Node2D _icon;
+	
 	bool _isRotate = true;
+	
+	Node2D _icon;
 	
 	public override void _Ready()
 	{
 		_icon = GetNode<Sprite2D>("Icon");
+		
 		// AsyncRoutine();
 	}
 

@@ -8,7 +8,7 @@ public partial class FruitTest : Node2D
 {
 	public override void _Ready()
 	{
-		MakeFruit();
+		// MakeFruit();
 	}
 	
 	void MakeFruit()
