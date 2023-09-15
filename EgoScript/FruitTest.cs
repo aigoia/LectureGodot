@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace GodotTest.EgoScript;
@@ -7,7 +8,7 @@ public partial class FruitTest : Node2D
 {
 	public override void _Ready()
 	{
-		// MakeFruit();
+		MakeFruit();
 	}
 	
 	void MakeFruit()
@@ -23,7 +24,7 @@ public partial class FruitTest : Node2D
 
 		fruits.RemoveAll(i => i.FruitColor == Colors.Yellow);
 		var fruit = fruits.Find(i => i.FruitType == FruitType.Apple);
-
+		
 		var isReal = (fruit.FruitType) switch
 		{
 			FruitType.Apple => true,
