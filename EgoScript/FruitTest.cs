@@ -25,7 +25,7 @@ public partial class FruitTest : Node2D
 		fruits.RemoveAll(i => i.FruitColor == Colors.Yellow);
 		var fruit = fruits.Find(i => i.FruitType == FruitType.Apple);
 		
-		var isReal = (fruit.FruitType) switch
+		var isReal = fruit.FruitType switch
 		{
 			FruitType.Apple => true,
 			FruitType.Banana => false,
