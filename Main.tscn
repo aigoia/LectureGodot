@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://EgoScript/Main.cs" id="1_ds8xb"]
 [ext_resource type="Texture2D" uid="uid://6uvdcc3eqil8" path="res://Assets/Tiles/map.png" id="2_i7qc1"]
-[ext_resource type="Script" path="res://EgoScript/Map.cs" id="3_4dh76"]
+[ext_resource type="Script" path="res://EgoScript/World.cs" id="3_781yu"]
 [ext_resource type="PackedScene" uid="uid://bxe40qp37xxqm" path="res://Prefabs/Player.tscn" id="4_ldw6q"]
 [ext_resource type="Script" path="res://EgoScript/AsyncTest.cs" id="4_nff0j"]
 [ext_resource type="Texture2D" uid="uid://gdyi881cmswp" path="res://Assets/icon.svg" id="5_ny428"]
@@ -11,10 +11,10 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ds8xb")
 
-[node name="Map" type="Sprite2D" parent="."]
+[node name="World" type="Sprite2D" parent="."]
 position = Vector2(336, 192)
 texture = ExtResource("2_i7qc1")
-script = ExtResource("3_4dh76")
+script = ExtResource("3_781yu")
 
 [node name="AsyncTest" type="Node2D" parent="."]
 visible = false

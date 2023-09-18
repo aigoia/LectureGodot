@@ -2,7 +2,7 @@ using Godot;
 
 namespace GodotTest.EgoScript;
 
-public partial class Map : Sprite2D
+public partial class World : Sprite2D
 {
 	public override void _Ready() => GD.Print(Say("Hello Godot!"));
 	
