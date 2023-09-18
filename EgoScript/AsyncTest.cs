@@ -22,9 +22,7 @@ public partial class AsyncTest : Node2D
 		while (_isRotate)
 		{
 			IconNode.RotationDegrees += RotateAngle;
-			await Task.Delay(DelayTime);
-			
-			// dont use await Task.Yield() like Unity
+			await Task.Delay(DelayTime); // dont use await Task.Yield() like Unity
 		}
 	}
 }
