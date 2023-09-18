@@ -8,7 +8,7 @@ public partial class Map : Sprite2D
 	
 	string Say(string say)
 	{
-		return say.ToLower() switch 
+		return (say.ToLower()) switch 
 		{
 			"hello world!" => "Nice to meet you!",
 			"hello world" => "Nice to meet you",
