@@ -14,15 +14,12 @@ public partial class Player : Node2D
 	float _horizontalMovement = 0;
 	bool _track = false;
 	
-	Sprite2D _image;
-	AnimationPlayer _animationPlayer;
+	Sprite2D ImageNode => GetNode<Sprite2D>("Image");
+	AnimationPlayer AnimationNode => GetNode<AnimationPlayer>("AnimationPlayer");
 
 	public override void _Ready()
 	{
-		_image = GetNode<Sprite2D>("Image");
-		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		
-		_animationPlayer.Play("Idle");
+		AnimationNode.Play("Idle");
 	}
 
 	public override void _Process(double delta)
@@ -42,7 +39,7 @@ public partial class Player : Node2D
 	
 	void State() 
 	{
-		_image.FlipH = _velocity.X is 0 ? _image.FlipH : _velocity.X < 0;
-		_animationPlayer.Play(_velocity.X is not 0 ? "Walk" : _track ? "Track" : "Idle");
+		ImageNode.FlipH = _velocity.X is 0 ? ImageNode.FlipH : _velocity.X < 0;
+		AnimationNode.Play(_velocity.X is not 0 ? "Walk" : _track ? "Track" : "Idle");
 	}
 }

@@ -10,12 +10,10 @@ public partial class AsyncTest : Node2D
 	
 	bool _isRotate = true;
 	
-	Node2D _icon;
+	Sprite2D IconNode => GetNode<Sprite2D>("Icon");
 	
 	public override void _Ready()
 	{
-		_icon = GetNode<Sprite2D>("Icon");
-		
 		// AsyncRoutine();
 	}
 
@@ -23,7 +21,7 @@ public partial class AsyncTest : Node2D
 	{
 		while (_isRotate)
 		{
-			_icon.RotationDegrees += RotateAngle;
+			IconNode.RotationDegrees += RotateAngle;
 			await Task.Delay(DelayTime);
 		}
 	}
