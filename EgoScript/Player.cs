@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace GodotTest.EgoScript;
@@ -28,7 +29,7 @@ public partial class Player : Node2D
 		State();
 	}
 	
-	void Move(double delta) 
+	void Move(double delta)
 	{
 		_horizontalMovement = Input.IsKeyPressed(Left) ? -1 : Input.IsKeyPressed(Right) ? 1 : 0;
 		_track = Input.IsKeyPressed(Down);
@@ -37,7 +38,7 @@ public partial class Player : Node2D
 		MoveLocalX((float)(_velocity.X * delta));
 	}
 	
-	void State() 
+	void State()
 	{
 		ImageNode.FlipH = _velocity.X is 0 ? ImageNode.FlipH : _velocity.X < 0;
 		AnimationNode.Play(_velocity.X is not 0 ? "Walk" : _track ? "Track" : "Idle");
