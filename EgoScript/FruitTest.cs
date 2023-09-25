@@ -35,6 +35,17 @@ public partial class FruitTest : Node2D
 		};
 
 		GD.Print(isReal);
+		
+		int Sum(int n)
+		{
+			return n switch
+			{
+				_ when n > 0 => n + Sum(n - 1),
+				_ => 0
+			};
+		}
+		
+		GD.Print(Sum(5));
 	}
 
 	public enum FruitType
