@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Godot;
 
@@ -23,6 +24,15 @@ public partial class AsyncTest : Node2D
 		{
 			IconNode.RotationDegrees += RotateAngle;
 			await Task.Delay(DelayTime); // dont use await Task.Yield() like Unity
+		}
+	}
+	
+	// unity-like wait until
+	async Task WaitUntilAsync(Func<bool> condition)
+	{
+		while (!condition.Invoke())
+		{
+			await Task.Delay(DelayTime); 
 		}
 	}
 }
