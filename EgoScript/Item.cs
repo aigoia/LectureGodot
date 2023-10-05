@@ -20,6 +20,7 @@ public partial class Item : Node2D
 
 			if (_player.IsTrack is false) continue;
 			
+
 			Show();
 			_isEntered = false;
 		}
