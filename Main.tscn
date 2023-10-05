@@ -16,10 +16,6 @@ position = Vector2(336, 192)
 texture = ExtResource("2_i7qc1")
 script = ExtResource("3_781yu")
 
-[node name="FruitTest" type="Node2D" parent="."]
-visible = false
-script = ExtResource("6_4bcot")
-
 [node name="ItemManager" type="Node2D" parent="."]
 script = ExtResource("5_xk1ej")
 
@@ -34,3 +30,7 @@ position = Vector2(572, 252)
 
 [node name="Player" parent="." instance=ExtResource("4_ldw6q")]
 position = Vector2(206, 244)
+
+[node name="FruitTest" type="Node2D" parent="."]
+visible = false
+script = ExtResource("6_4bcot")
