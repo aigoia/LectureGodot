@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwtpn2ewvs50n"]
+[gd_scene load_steps=8 format=3 uid="uid://dwtpn2ewvs50n"]
 
 [ext_resource type="Script" path="res://EgoScript/Main.cs" id="1_ds8xb"]
 [ext_resource type="Texture2D" uid="uid://6uvdcc3eqil8" path="res://Assets/Tiles/map.png" id="2_i7qc1"]
 [ext_resource type="Script" path="res://EgoScript/World.cs" id="3_781yu"]
 [ext_resource type="PackedScene" uid="uid://bxe40qp37xxqm" path="res://Prefabs/Player.tscn" id="4_ldw6q"]
+[ext_resource type="Script" path="res://EgoScript/ItemManager.cs" id="5_xk1ej"]
 [ext_resource type="Script" path="res://EgoScript/FruitTest.cs" id="6_4bcot"]
 [ext_resource type="PackedScene" uid="uid://sjc1plbw6nc0" path="res://Prefabs/Item.tscn" id="8_sycqi"]
 
@@ -20,17 +21,15 @@ visible = false
 script = ExtResource("6_4bcot")
 
 [node name="ItemManager" type="Node2D" parent="."]
+script = ExtResource("5_xk1ej")
 
 [node name="Item1" parent="ItemManager" instance=ExtResource("8_sycqi")]
-visible = false
 position = Vector2(420, 252)
 
 [node name="Item2" parent="ItemManager" instance=ExtResource("8_sycqi")]
-visible = false
 position = Vector2(56, 252)
 
 [node name="Item3" parent="ItemManager" instance=ExtResource("8_sycqi")]
-visible = false
 position = Vector2(572, 252)
 
 [node name="Player" parent="." instance=ExtResource("4_ldw6q")]
