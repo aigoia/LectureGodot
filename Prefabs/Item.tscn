@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sjc1plbw6nc0"]
 
 [ext_resource type="Script" path="res://EgoScript/Item.cs" id="1_b73hn"]
-[ext_resource type="Texture2D" uid="uid://8011ub510sh0" path="res://Assets/Item/Ironchests_RPG_items_pico8_v1.png" id="1_s80fs"]
+[ext_resource type="Texture2D" uid="uid://8011ub510sh0" path="res://Assets/Items/Ironchests_RPG_items_pico8_v1.png" id="1_s80fs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y581"]
 atlas = ExtResource("1_s80fs")
