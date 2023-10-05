@@ -13,7 +13,8 @@ public partial class Player : Node2D
 	
 	Vector2 _velocity = Vector2.Zero;
 	float _horizontalMovement = 0;
-	bool _track = false;
+	public bool IsTrack => _isTrack;
+	bool _isTrack = false;
 	
 	Sprite2D ImageNode => GetNode<Sprite2D>("Image");
 	AnimationPlayer AnimationNode => GetNode<AnimationPlayer>("AnimationPlayer");
@@ -32,7 +33,7 @@ public partial class Player : Node2D
 	void Move(double delta)
 	{
 		_horizontalMovement = Input.IsKeyPressed(Left) ? -1 : Input.IsKeyPressed(Right) ? 1 : 0;
-		_track = Input.IsKeyPressed(Down);
+		_isTrack = Input.IsKeyPressed(Down);
 		
 		_velocity.X = _horizontalMovement * MoveSpeed;
 		MoveLocalX((float)(_velocity.X * delta));
@@ -41,6 +42,8 @@ public partial class Player : Node2D
 	void State()
 	{
 		ImageNode.FlipH = _velocity.X is 0 ? ImageNode.FlipH : _velocity.X < 0;
-		AnimationNode.Play(_velocity.X is not 0 ? "Walk" : _track ? "Track" : "Idle");
+		AnimationNode.Play(_velocity.X is not 0 ? "Walk" : _isTrack ? "Track" : "Idle");
 	}
 }
+
+
